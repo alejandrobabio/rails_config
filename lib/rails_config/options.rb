@@ -19,7 +19,7 @@ module RailsConfig
       conf = Hash.new
       ENV.each do |key, value|
         next unless key.to_s.index(RailsConfig.const_name) == 0
-        hash = value
+        hash = YAML.load(value)
         key.to_s.split('.').reverse.each do |element|
           hash = {element => hash}
         end

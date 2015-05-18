@@ -257,7 +257,7 @@ ENV['AppSettings.section.size'] = 1
 ENV['AppSettings.section.server'] = 'google.com'
 ```
 
-It won't work with arrays, though.
+It won't work with arrays, though. As environment variables are stored as strings, they are converted to ruby objects under YAML rules.
 
 To upload your local values to Heroku you could ran `bundle exec rake rails_config:heroku`.
 

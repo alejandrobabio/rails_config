@@ -97,7 +97,17 @@ describe RailsConfig do
 
     it "should load basic ENV variables" do
       config.load_env!
-      expect(config.test_var).to eq("123")
+      expect(config.test_var).to eq 123
+    end
+
+    it "should load boolean true ENV variables" do
+      config.load_env!
+      expect(config.true).to eq true
+    end
+
+    it "should load boolean false ENV variables" do
+      config.load_env!
+      expect(config.false).to eq false
     end
 
     it "should load nested sections" do
@@ -108,14 +118,14 @@ describe RailsConfig do
     it "should override settings from files" do
       RailsConfig.load_and_set_settings ["#{fixture_path}/settings.yml"]
       expect(Settings.server).to eq("google.com")
-      expect(Settings.size).to eq("3")
+      expect(Settings.size).to eq(3)
     end
 
     it "should reload env" do
       RailsConfig.load_and_set_settings ["#{fixture_path}/settings.yml"]
       RailsConfig.reload!
       expect(Settings.server).to eq("google.com")
-      expect(Settings.size).to eq("3")
+      expect(Settings.size).to eq(3)
     end
   end
 
