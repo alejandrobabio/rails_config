@@ -21,7 +21,7 @@ module RailsConfig
 
         out = ''
         dotted_hash = to_dotted_hash Kernel.const_get(RailsConfig.const_name).to_hash, {}, RailsConfig.const_name
-        dotted_hash.each {|key, value| out += " #{key}=#{value} "}
+        dotted_hash.each {|key, value| out += " #{key}='#{value}' "}
         out
       end
 
